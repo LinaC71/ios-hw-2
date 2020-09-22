@@ -35,11 +35,37 @@ import UIKit
  */
 
 
-var blue_5 = UIImage(named: "Blue_6.png")
-var red_9 = UIImage(named: "Red_9.png")
+var blue_6 = UIImage(named: "Blue_6.png")
+var blue_1 = UIImage(named: "Blue_1.png")
+var blue_2 = UIImage(named: "Blue_2.png")
+var blue_3 = UIImage(named: "Blue_3.png")
+var blue_4 = UIImage(named: "Blue_4.png")
+var blue_5 = UIImage(named: "Blue_5.png")
+var blue_7 = UIImage(named: "Blue_7.png")
+var blue_8 = UIImage(named: "Blue_8.png")
 
+var red_9 = UIImage(named: "Red_9.png")
+var red_1 = UIImage(named: "Red_1.png")
+var red_2 = UIImage(named: "Red_2.png")
+var red_3 = UIImage(named: "Red_3.png")
+var red_4 = UIImage(named: "Red_4.png")
+var red_5 = UIImage(named: "Red_5.png")
+var red_6 = UIImage(named: "Red_6.png")
+var red_7 = UIImage(named: "Red_7.png")
+var red_8 = UIImage(named: "Red_8.png")
+
+var green_6 = UIImage(named: "Green_6.png")
+var green_9 = UIImage(named: "Green_9.png")
+var green_4 = UIImage(named: "Green_4.png")
+var green_3 = UIImage(named: "Green_3.png")
+var green_5 = UIImage(named: "Green_5.png")
+var green_7 = UIImage(named: "Green_7.png")
+var green_1 = UIImage(named: "Green_1.png")
+var green_2 = UIImage(named: "Green_2.png")
+var green_8 = UIImage(named: "Green_8.png")
 var green_Skip = UIImage(named: "Green_Skip.png")
 var wild_Draw = UIImage(named: "Wild_Draw.png")
+
 
 
 /*:
@@ -88,7 +114,29 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 /// قم بإنشاء الستركت هنا
 
 // struct ...
-
+struct Card {
+    
+    var color: String?
+    var number: Int?
+    var action: String?
+    
+    func imageName () -> String {
+        
+        if color != nil && number != nil{
+            
+            return ("\(String(describing: color))_\(String(describing: number)).png")
+        }else if action != nil || color != nil {
+            
+            return("\(String(describing: color))_\(String(describing: action)).png")
+            
+        }else if action != nil {
+            
+            return ("\(String(describing: action)).png")
+        }else {
+            return ""
+        }
+    }
+}
 
 
 
@@ -103,3 +151,28 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 //let cardImages = cards.map{UIImage(named: $0.imageName())}
 //randomCardImage
 //cardImages
+
+var cards: [Card] = []
+var colors = ["Green", "Red", "Blue", "Yellow"]
+var actionCards = ["Draw", "Reverse", "Skip"]
+var specialCards = ["Wild_Draw", "Wild"]
+
+for colour in colors {
+    for number in 0...9{
+        
+        cards.append(Card(color: colour, number: number))
+    }
+}
+
+for action in actionCards {
+    for color in colors{
+        for _ in 1...2 {
+            
+            cards.append(Card(color:color, action:action))
+        }
+    }
+}
+
+let randomCard = cards.randomElement()!
+let randomCard =UIImage
+
